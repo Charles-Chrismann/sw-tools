@@ -1,8 +1,8 @@
 import { Monster } from "./classes/Monster";
 import { Skill } from "./classes/Skill";
-import { ArtifactSub } from "./declarations";
+import { ArtifactSub, AttributeArtifactSubsKey, CommonArtifactSubsKey, TypeArtifactSubsKey } from "./declarations";
 
-export const COMMON_ARTIFACT_SUBS: {[key: string]: ArtifactSub} = {
+export const COMMON_ARTIFACT_SUBS: {[k in CommonArtifactSubsKey]: ArtifactSub} = {
 	"COM_RENFO_ATK_DEF": {
 		title: {
 			French: "Effet renforcement ATQ/DEF +"
@@ -96,7 +96,7 @@ export const COMMON_ARTIFACT_SUBS: {[key: string]: ArtifactSub} = {
 	},
 };
 
-export const ATTRIBUTE_ARTIFACT_SUBS: {[key: string]: ArtifactSub} = {
+export const ATTRIBUTE_ARTIFACT_SUBS: {[k in AttributeArtifactSubsKey]: ArtifactSub} = {
 	...COMMON_ARTIFACT_SUBS,
 	"INCR_DMG_FIRE": {
 		title: {
@@ -171,7 +171,7 @@ export const ATTRIBUTE_ARTIFACT_SUBS: {[key: string]: ArtifactSub} = {
 };
 
 
-export const TYPE_ARTIFACT_SUBS: {[key: string]: ArtifactSub} = {
+export const TYPE_ARTIFACT_SUBS: {[k in TypeArtifactSubsKey]: ArtifactSub} = {
 	...COMMON_ARTIFACT_SUBS,
 	"COMP1_CRIT": {
 		title: {

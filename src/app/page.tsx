@@ -1,11 +1,10 @@
 import { Summoner } from "@/classes/Summoner";
 import { SummonerMonster } from "@/classes/SummonerMonster";
-import { Monsters } from "@/constants";
+import { BASE_MONSTERS_ARRAY } from "@/Monsters";
 
 export default function Home() {
-
-  const Leo = Monsters.find(m => m.name === "Leo")!
-  const TianLang = Monsters.find(m => m.name === "Tian Lang")!
+  const Leo = BASE_MONSTERS_ARRAY.find(m => m.name === "Leo")!
+  const TianLang = BASE_MONSTERS_ARRAY.find(m => m.name === "Tian Lang")!
 
   const leo = new SummonerMonster(
     Leo,
