@@ -1,1 +1,1 @@
-# A Summoners War damage calculator
+# A Summoners War tool collection

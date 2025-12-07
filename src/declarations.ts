@@ -1,4 +1,5 @@
 import { Skill } from "./classes/Skill"
+import { COMMON_ARTIFACT_SUBS } from "./constants"
 
 export interface MonsterConstructor {
 	name: string
@@ -65,3 +66,27 @@ export interface SkillUp {
 }
 
 export type AwakeLevel = "notAwake" | "awake" | "secondAwake"
+
+export type MainArtifactType = "atk" | "def" | "spd"
+
+export interface ArtifactSub {
+	title: TranslationObject
+	min: number
+	max: number
+}
+
+export interface AttributeArtifact {
+	main: MainArtifactType
+	subs: ArtifactSub
+}
+
+export interface ArtifactStat {
+	version: string // ex: 7 Dec 2025
+	main: {
+		hp: number
+		def: number
+		atk: number
+	}
+	attributeSubs: { sub: keyof typeof COMMON_ARTIFACT_SUBS, percentage: number }[]
+	typeSubs: { sub: keyof typeof COMMON_ARTIFACT_SUBS, percentage: number }[]
+}[]

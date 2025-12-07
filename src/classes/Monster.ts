@@ -1,10 +1,12 @@
-import { Attribute, MonsterConstructor, MonsterStat } from "@/declarations";
+import { ArtifactStat, Attribute, MonsterConstructor, MonsterStat } from "@/declarations";
 import { Skill } from "./Skill";
+import { COMMON_ARTIFACT_SUBS } from "@/constants";
 
 export class Monster {
 
 	name: string
 	attribute: Attribute
+	artifactStats: ArtifactStat | null
 	stats: {
 		notAwake: MonsterStat,
 		awake?: MonsterStat,
@@ -12,7 +14,10 @@ export class Monster {
 	}
 	skills: Skill[]
 
-	constructor(monster: MonsterConstructor) {
+	constructor(
+		monster: MonsterConstructor,
+		artifactStats: ArtifactStat | null = null
+	) {
 		this.name = monster.name
 		this.stats = {
 			notAwake: {
@@ -39,6 +44,8 @@ export class Monster {
 		}
 		this.attribute = monster.attribute
 		this.skills = monster.skills
+
+		this.artifactStats = artifactStats
 	}
 }
 
