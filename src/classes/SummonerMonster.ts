@@ -22,13 +22,14 @@ export class SummonerMonster {
 	}
 
 	getTotalAtk() {
+		if(!this.baseMonster.stats) throw new Error(`${this.baseMonster.name}'s stats are undefined`)
 		const baseAtk = this.baseMonster.stats[this.awakeLevel]!.atk
 		const ownerAtkBonus = this.owner.skills['atk']
 		return baseAtk + 497 + baseAtk * ownerAtkBonus / 100
 	}
 
 	getSkillDamage(skillIndex: number) {
-
+		if(!this.baseMonster.skills) throw new Error(`${this.baseMonster.name}'s skills are undefined`)
 		const skill = this.baseMonster.skills[skillIndex]
 		const skillUpDamage = skill.skillUps
 		.filter((s, i) => s.upgradeType === "Damage" &&  s.lvl >= this.skillUps[skillIndex])
@@ -48,6 +49,7 @@ export class SummonerMonster {
 	}
 
 	getDamageReductionFactor() {
+		if(!this.baseMonster.stats) throw new Error(`${this.baseMonster.name}'s stats are undefined`)
 		const defense = this.baseMonster.stats[this.awakeLevel]!.def
 		return 1000 / ( 1140 + 3.5 * defense)
 	}
